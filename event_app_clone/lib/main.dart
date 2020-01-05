@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import "package:flutter_dtx/flutter_dtx.dart";
 import 'const.dart';
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -45,10 +46,34 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorsConst.greyColor,
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: 2,
+        selectedItemColor: ColorsConst.blueText,
+        unselectedItemColor: Colors.black,
+        items: [
+          BottomNavigationBarItem(
+           title: SizedBox.shrink(),
+           icon:  Icon(Icons.home)  
+          ),
+          BottomNavigationBarItem(
+           title:SizedBox.shrink(),
+           icon:  Icon(Icons.calendar_today)
+          ),
+         BottomNavigationBarItem(
+           title:SizedBox.shrink(),
+           icon:  Icon(Icons.search)
+          ),
+          BottomNavigationBarItem(
+           title:SizedBox.shrink(),
+           icon:  Icon(Icons.person)
+          ),
+        ],
+      ),
       body: Column(
         children: <Widget>[
           Container(
-            height: context.getDeviceSize().height / 3,
+            height: context.getDeviceSize().height / 2.0,
             decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.only(bottomLeft: Radius.circular(50)),
@@ -101,17 +126,91 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Row(
                     children: <Widget>[
                       Expanded(
-                      child: Text("12 Suggested Themes",style: TextStyle(color: ColorsConst.greyColor,fontSize: 10,fontWeight: FontWeight.w800),
-
-                      ))
-
-
-
+                      child: Text("12 Suggested Themes",style: TextStyle(color: ColorsConst.greyColor,fontSize: 12,fontWeight: FontWeight.w800),
+                      )),
+                      Text("See all",style: TextStyle(color: ColorsConst.blueText),)
                     ],
-
                   ),
+                ),
+                Container(
+                  height: context.getDeviceSize().width/2.8,
+                  width: double.maxFinite,
+                  margin: EdgeInsets.only(top: 20,left: 20),
+                  child: ListView.separated(
+                    itemCount: 5,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (con,_){
+                      return Container(
+                        height: con.getDeviceSize().width/2.0,
+                        width: con.getDeviceSize().width/3.8,
+                          child: Column(
+                          children: <Widget>[
+                            Container(
+                              height: con.getDeviceSize().width/3.6,
+                              width: con.getDeviceSize().width/2.8,
+                              decoration: BoxDecoration(
+                                color: Colors.indigoAccent,
+                                borderRadius: BorderRadius.circular(10)
+                              ),
+                              
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8),
+                              child: Text("Food",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700)))
+                          
+                          ],
+                        ),
+                        
+                      );
+                    },
+                    separatorBuilder: (context,postion){
+                      return SizedBox(
+                      width: 6,
+                      );
+
+                    },
+
+                  )
                 )
+
               ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.only(left: 20),
+                        
+              
+              child: ListView.separated(
+                itemCount: 2,
+                scrollDirection: Axis.vertical,
+                itemBuilder: (context,_){
+                  return Container(
+                    height: 250,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 20,top: 10,bottom: 10),
+                      child: Column(
+                        children: <Widget>[
+                          Text("Best of Vienna Waking Tour",style: TextStyle(),)
+                        ],
+                      ),
+                    ),
+                  
+                width: double.maxFinite,
+                decoration: BoxDecoration(
+                color: Colors.white,
+            
+              
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50),topLeft: Radius.circular(50))
+    
+                  ));
+                
+                },
+                separatorBuilder: (__,___){
+                  return SizedBox(height: 10);
+                },
+
+              ),
             ),
           )
         ],
