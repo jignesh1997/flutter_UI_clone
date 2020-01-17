@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsConst.greyColor,
+      backgroundColor: ColorsConst.backgoroundGrey,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: 2,
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: <Widget>[
           Container(
-            height: context.getDeviceSize().height / 2.0,
+            height:360,
             decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.only(bottomLeft: Radius.circular(50)),
@@ -86,14 +86,20 @@ class _MyHomePageState extends State<MyHomePage> {
                         children: <Widget>[
                           Container(
                             height: 40,
-                            width: 50,
+                            width: 40,
+                            margin: EdgeInsets.only(right: 8),
                             child: CircleAvatar(
+                              radius: 30,
+                              backgroundImage: AssetImage("profile.jpg"),
+
                               backgroundColor: Colors.yellow,
+
                             ),
                           ),
                           Container(
                               height: 16,
                               width: 16,
+
                               decoration: ShapeDecoration(
                                 color: Colors.red,
                                 shape: CircleBorder(
@@ -146,11 +152,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                height: con.getDeviceSize().width / 3.6,
-                                width: con.getDeviceSize().width / 2.8,
-                                decoration: BoxDecoration(
-                                    color: Colors.indigoAccent,
-                                    borderRadius: BorderRadius.circular(10)),
+                                  height: con.getDeviceSize().width / 3.6,
+                                  width: con.getDeviceSize().width / 2.8,
+
+                                child: Card(
+                                  clipBehavior: Clip.antiAlias,
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                                  child: Image.asset("images.jpg",fit: BoxFit.fill,
+                                  ),
+                                ),
                               ),
                               Padding(
                                   padding: const EdgeInsets.only(top: 8),
@@ -173,7 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Expanded(
             child: Container(
-              margin: EdgeInsets.only(left: 20),
+              margin: EdgeInsets.only(left: 30),
               child: ListView.separated(
                 itemCount: 2,
                 scrollDirection: Axis.vertical,
@@ -182,8 +192,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 250,
                       alignment: Alignment.centerLeft,
                       child: Container(
-                        margin: EdgeInsets.only(left: 50, top: 20, bottom: 10),
+                        margin: EdgeInsets.only(left: 40, top: 20, bottom: 10),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             Container(
                               child: Text(
@@ -199,7 +211,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Row(
                                 children: <Widget>[
                                   Padding(
-                                    padding:EdgeInsets.only(right: 10),
+                                    padding: EdgeInsets.only(right: 10),
                                     child: Chip(
                                         backgroundColor: ColorsConst.blueLight,
                                         label: Text(
@@ -212,7 +224,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     padding: EdgeInsets.only(right: 10),
                                     child: Chip(
                                         backgroundColor: ColorsConst.blueLight,
-
                                         label: Text(
                                           "History",
                                           style: TextStyle(
@@ -225,23 +236,100 @@ class _MyHomePageState extends State<MyHomePage> {
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(right: 8),
                                     decoration: ShapeDecoration(
-                                      shape: CircleBorder(),
-                                      color: ColorsConst.greyColor
-                                    ),
+                                        shape: CircleBorder(),
+                                        color: ColorsConst.greyColor),
                                   ),
-                                  Text("starts at 10:30",style: TextStyle(color: ColorsConst.greyColor),)
+                                  Text(
+                                    "starts at 10:30",
+                                    style:
+                                        TextStyle(color: ColorsConst.greyColor),
+                                  )
                                 ],
                                 mainAxisSize: MainAxisSize.min,
                               ),
                             ),
-                            Expanded(
-                              child: Stack(
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Row(
                                 children: <Widget>[
+                                  Container(
+                                    height: 50,
+                                    alignment: Alignment.centerLeft,
+                                    width: 95,
+                                    child: Stack(
+                                      children: <Widget>[
+                                        Align(
+                                          child: Container(
+                                            alignment: Alignment.centerRight,
+                                            height: 40,
+                                            width: 40,
+                                            decoration: ShapeDecoration(
+                                              shape: CircleBorder(
+                                                  side: BorderSide(
+                                                      color: Colors.white,
+                                                      width: 2)),
+                                              color: Colors.yellow,
+                                            ),
+                                            child: CircleAvatar(
+                                              backgroundImage: AssetImage("otherprofile.jpg"),
+                                            ),
+                                          ),
+                                          alignment: Alignment.centerRight,
+                                        ),
+                                        Align(
+                                          child: Container(
+                                            height: 40,
+                                            width: 40,
+                                            decoration: ShapeDecoration(
+                                              shape: CircleBorder(
+                                                  side: BorderSide(
+                                                      color: Colors.white,
+                                                      width: 2)),
+                                              color: Colors.yellow,
+                                            ),
+                                            child: CircleAvatar(
+                                              backgroundImage: AssetImage("profile.jpg"),
+                                            ),
+                                          ),
+                                          alignment: Alignment.center,
+                                        ),
+                                        Align(
+                                          child: Container(
+                                            height: 40,
+                                            width: 40,
+                                            decoration: ShapeDecoration(
+                                              shape: CircleBorder(
+                                                  side: BorderSide(
+                                                      color: Colors.white,
+                                                      width: 2)),
+                                              color: Colors.yellow,
+                                            ),
+                                            child: CircleAvatar(
+                                              backgroundImage: AssetImage("otherprofile.jpg"),
+                                            ),
+                                          ),
+                                          alignment: Alignment.centerLeft,
 
-
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "+8",
+                                      style: TextStyle(
+                                          color: ColorsConst.blueText,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
+                            Container(
+                                child: Text(
+                                    "We leave the big tour groups behind and explore city in our own small team.Lets make it interactive",style: TextStyle(color: ColorsConst.greyColor,fontSize: 16,fontWeight: FontWeight.w300),))
                           ],
                         ),
                       ),
